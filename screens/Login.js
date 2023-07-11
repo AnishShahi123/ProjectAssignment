@@ -19,7 +19,7 @@ const LoginPage = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Login</Text>
-      <Text> Please sign in to continue.</Text>
+      <Text style={styles.subtitle}> Please sign in to continue.</Text>
       <View style={styles.SectionStyle}>
         <Ionicon name="mail" size={20} />
         <TextInput
@@ -42,7 +42,9 @@ const LoginPage = () => {
       </View>
       <View>
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonTextStyle}>LOGIN</Text>
+          <Text style={styles.buttonTextStyle}>
+            LOGIN <Ionicon name="arrow-forward" size={20} />
+          </Text>
         </TouchableOpacity>
       </View>
       <Text style={styles.bottomText}> Don't have an account? Sign up</Text>
@@ -98,6 +100,7 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     paddingVertical: 10,
     fontSize: 16,
+    alignItems: "center",
   },
   forgotText: {
     color: "#000",
