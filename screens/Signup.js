@@ -27,6 +27,9 @@ const Signup = () => {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.backarrow} onPress={handleSignIn}>
+        <Ionicon name="arrow-back-outline" size={40} />
+      </TouchableOpacity>
       <Text style={styles.title}>Create Account</Text>
       <View style={styles.SectionStyle}>
         <Ionicon name="person" size={20} />
@@ -86,7 +89,7 @@ const styles = StyleSheet.create({
   SectionStyle: {
     flexDirection: "row",
     height: 40,
-    marginTop: 40,
+    marginTop: 10,
     marginLeft: 35,
     marginRight: 35,
     borderBottomWidth: 1,
@@ -140,7 +143,7 @@ const styles = StyleSheet.create({
     fontSize: 36,
     fontWeight: "800",
     position: "absolute",
-    top: 180,
+    top: 170,
     left: 30,
   },
   bottomText: {
@@ -154,6 +157,11 @@ const styles = StyleSheet.create({
     color: "blue",
     fontSize: 18,
     fontWeight: "bold",
+  },
+  backarrow: {
+    position: "absolute",
+    top: 80,
+    left: 20,
   },
 });
 
