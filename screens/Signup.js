@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Ionicon from "react-native-vector-icons/Ionicons";
-import Title from "../components/Title";
 
 const Signup = () => {
   const [fullName, setFullName] = useState("");

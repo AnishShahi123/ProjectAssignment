@@ -17,6 +17,10 @@ const LoginPage = () => {
     // TODO: Send the email and password to the server for authentication.
   };
 
+  const handleSignup = () => {
+    navigation.navigate("Signup");
+  };
+
   return (
     <View style={styles.container}>
       <Title heading="Login" />
@@ -48,7 +52,10 @@ const LoginPage = () => {
           </Text>
         </TouchableOpacity>
       </View>
-      <Text style={styles.bottomText}> Don't have an account? Sign up</Text>
+      <Text style={styles.bottomText}>
+        {" "}
+        Don't have an account? <Text style={styles.signupText}>Sign up</Text>
+      </Text>
     </View>
   );
 };
@@ -123,6 +130,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginLeft: 10,
     fontWeight: 800,
+  },
+  signupText: {
+    color: "darkorange",
   },
 });
 
