@@ -1,11 +1,11 @@
+import { useNavigation } from "@react-navigation/native"; // Import the useNavigation hook
 import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
-  View,
   TextInput,
-  Button,
   TouchableOpacity,
+  View,
 } from "react-native";
 import Ionicon from "react-native-vector-icons/Ionicons";
 
@@ -14,9 +14,15 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigation = useNavigation(); // Initialize the navigation object
 
   const handleRegister = () => {
     // TODO: Send the email, password, and name to the server for registration.
+  };
+
+  const handleSignIn = () => {
+    // Navigate to the LoginPage
+    navigation.navigate("Login");
   };
 
   return (
@@ -60,13 +66,18 @@ const Signup = () => {
         />
       </View>
       <View>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleRegister}>
           <Text style={styles.buttonTextStyle}>
             SIGN UP <Ionicon name="arrow-forward" size={20} />
           </Text>
         </TouchableOpacity>
       </View>
-      <Text style={styles.bottomText}> Already have an account? Sign in</Text>
+      <Text style={styles.bottomText}>
+        Already have an account?{" "}
+        <Text style={styles.signInText} onPress={handleSignIn}>
+          Sign in
+        </Text>
+      </Text>
     </View>
   );
 };
@@ -138,6 +149,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 50,
     left: 90,
+  },
+  signInText: {
+    color: "blue",
+    fontSize: 18,
+    fontWeight: "bold",
   },
 });
 
