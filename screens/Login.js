@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import Ionicon from "react-native-vector-icons/Ionicons";
 import Title from "../components/Title";
+import mongoose from "mongoose";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +17,36 @@ const LoginPage = () => {
   const navigation = useNavigation(); // Initialize the navigation object
 
   const handleLogin = () => {
-    // TODO: Send the email and password to the server for authentication.
+    // Make an API request to the server for authentication
+    // Replace the API_URL with your actual server URL
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the server
+        if (data.success) {
+          // User is authenticated, perform necessary actions
+          // For example, navigate to the home screen
+          navigation.navigate("Home");
+        } else {
+          // Authentication failed, handle the error
+          // For example, display an error message
+          alert("Authentication failed. Please try again.");
+        }
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during the API request
+        console.error(error);
+        alert("An error occurred during authentication. Please try again.");
+      });
   };
 
   const handleSignup = () => {
@@ -46,7 +76,9 @@ const LoginPage = () => {
           secureTextEntry={true}
           style={styles.input}
         />
-        <Text style={styles.forgotText}>FORGOT</Text>
+        <TouchableOpacity>
+          <Text style={styles.forgotText}>FORGOT</Text>
+        </TouchableOpacity>
       </View>
       <View>
         <TouchableOpacity style={styles.button} onPress={handleLogin}>

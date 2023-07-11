@@ -17,7 +17,37 @@ const Signup = () => {
   const navigation = useNavigation(); // Initialize the navigation object
 
   const handleRegister = () => {
-    // TODO: Send the email, password, and name to the server for registration.
+    // Make an API request to the server for registration
+    // Replace the API_URL with your actual server URL
+    fetch("/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        fullName,
+        email,
+        password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the server
+        if (data.success) {
+          // Registration successful, perform necessary actions
+          // For example, navigate to the login screen
+          navigation.navigate("Login");
+        } else {
+          // Registration failed, handle the error
+          // For example, display an error message
+          alert("Registration failed. Please try again.");
+        }
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during the API request
+        console.error(error);
+        alert("An error occurred during registration. Please try again.");
+      });
   };
 
   const handleSignIn = () => {
@@ -28,7 +58,7 @@ const Signup = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.backarrow} onPress={handleSignIn}>
-        <Ionicon name="arrow-back-outline" size={40} />
+        <Ionicon name="arrow-back" size={40} />
       </TouchableOpacity>
       <Text style={styles.title}>Create Account</Text>
       <View style={styles.SectionStyle}>
@@ -143,7 +173,7 @@ const styles = StyleSheet.create({
     fontSize: 36,
     fontWeight: "800",
     position: "absolute",
-    top: 170,
+    top: 140,
     left: 30,
   },
   bottomText: {
@@ -160,7 +190,7 @@ const styles = StyleSheet.create({
   },
   backarrow: {
     position: "absolute",
-    top: 80,
+    top: 60,
     left: 20,
   },
 });
