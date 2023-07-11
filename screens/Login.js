@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Button,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -37,9 +30,8 @@ const LoginPage = () => {
           style={styles.input}
         />
       </View>
-      <TouchableOpacity style={styles.buttonStyle}>
-        <Text>LOGIN</Text>
-      </TouchableOpacity>
+      <View></View>
+
       <Text style={styles.bottomText}> Don't have an account? Sign up</Text>
     </View>
   );
@@ -75,15 +67,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     borderColor: "#dadae8",
-  },
-  buttonStyle: {
-    width: "50%",
-    backgroundColor: "#7DE24E",
-    borderWidth: 1,
-    color: "#FFFFFF",
-    borderColor: "#7DE24E",
-    alignItems: "center",
-    borderRadius: 10,
   },
   bottomText: {
     color: "black",
