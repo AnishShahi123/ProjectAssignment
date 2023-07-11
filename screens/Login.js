@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Ionicon from "react-native-vector-icons/Ionicons";
+import Title from "../components/Title";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -18,8 +19,8 @@ const LoginPage = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      <Text style={styles.subtitle}> Please sign in to continue.</Text>
+      <Title heading="Login" />
+      <Title subtitle="Please sign in to continue." />
       <View style={styles.SectionStyle}>
         <Ionicon name="mail" size={20} />
         <TextInput
@@ -38,7 +39,7 @@ const LoginPage = () => {
           secureTextEntry={true}
           style={styles.input}
         />
-        {/* <Text style={styles.forgotText}>FORGOT</Text> */}
+        <Text style={styles.forgotText}>FORGOT</Text>
       </View>
       <View>
         <TouchableOpacity style={styles.button}>
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
   SectionStyle: {
     flexDirection: "row",
     height: 40,
-    marginTop: 20,
+    marginTop: 40,
     marginLeft: 35,
     marginRight: 35,
     borderWidth: 1,
@@ -109,6 +110,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     position: "absolute",
     left: 80,
+    marginTop: 15,
   },
   buttonTextStyle: {
     color: "#FFFFFF",
@@ -120,6 +122,7 @@ const styles = StyleSheet.create({
     color: "#000",
     fontSize: 14,
     marginLeft: 10,
+    fontWeight: 800,
   },
 });
 
