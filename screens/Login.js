@@ -29,7 +29,7 @@ const LoginPage = () => {
           style={styles.input}
         />
       </View>
-      <View style={styles.SectionStyle}>
+      <View style={styles.SectionStylePassword}>
         <Ionicon name="keypad" size={20} />
         <TextInput
           placeholder="Password"
@@ -74,6 +74,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 10,
   },
+  SectionStylePassword: {
+    flexDirection: "row",
+    height: 40,
+    marginTop: 10,
+    marginLeft: 35,
+    marginRight: 35,
+    borderWidth: 1,
+    borderRadius: 20,
+    margin: 10,
+    alignItems: "center",
+    paddingHorizontal: 10,
+  },
   input: {
     flex: 1,
     color: "black",
@@ -95,6 +107,8 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     alignItems: "center",
     justifyContent: "center",
+    position: "absolute",
+    left: 80,
   },
   buttonTextStyle: {
     color: "#FFFFFF",
