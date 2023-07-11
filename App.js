@@ -1,7 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import LoginPage from "./screens/Login";
-import Signup from "./screens/Signup";
 
 export default function App() {
   return (
@@ -9,7 +8,6 @@ export default function App() {
       <StatusBar style="auto" />
       <Text>Hello</Text>
       <LoginPage />
-      <Signup />
     </View>
   );
 }

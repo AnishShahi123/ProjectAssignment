@@ -19,6 +19,7 @@ const LoginPage = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Login</Text>
+      <Text> Please sign in to continue.</Text>
       <View style={styles.SectionStyle}>
         <TextInput
           placeholder="Email"
@@ -36,7 +37,10 @@ const LoginPage = () => {
           style={styles.input}
         />
       </View>
-      <TouchableOpacity style={styles.buttonStyle}>LOGIN</TouchableOpacity>
+      <TouchableOpacity style={styles.buttonStyle}>
+        <Text>LOGIN</Text>
+      </TouchableOpacity>
+      <Text style={styles.bottomText}> Don't have an account? Sign up</Text>
     </View>
   );
 };
@@ -66,6 +70,10 @@ const styles = StyleSheet.create({
     paddingRight: 15,
     borderWidth: 1,
     borderRadius: 10,
+    shadowColor: "#171717",
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
     borderColor: "#dadae8",
   },
   buttonStyle: {
@@ -77,8 +85,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 10,
   },
-  forgotPassword: {
-    marginTop: 10,
+  bottomText: {
+    color: "black",
+    fontSize: 18,
+    position: "absolute",
+    bottom: 50,
   },
 });
 
