@@ -11,7 +11,7 @@ app.use(express.json());
 // Connect to MongoDB
 const connectToMongoDB = async () => {
   const uri =
-    "mongodb+srv://<Username>:<password>@cluster0.xlr8uns.mongodb.net/?retryWrites=true&w=majority";
+    "mongodb+srv://kanxagucci:gUcyRt0WsatxcTOS@cluster0.veh2xup.mongodb.net/?retryWrites=true&w=majority";
   const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -32,6 +32,7 @@ const UserSchema = new mongoose.Schema({
   fullName: String,
   email: String,
   password: String,
+  confirmPassword: String,
 });
 const User = mongoose.model("User", UserSchema);
 
@@ -81,18 +82,18 @@ app.post("/login", async (req, res) => {
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    // Generate a token
-    const token = jwt.sign({ userId: user.id }, secretKey, {
-      expiresIn: 60 * 60,
-    });
+    // // Generate a token
+    // const token = jwt.sign({ userId: user.id }, secretKey, {
+    //   expiresIn: 60 * 60,
+    // });
 
-    res.status(200).json({ message: "Login successful", token });
+    res.status(200).json({ message: "Login successful" });
   } catch (error) {
     console.error("Login error:", error);
     res.status(500).json({ message: "Login failed" });
   }
 });
 
-app.listen(19001, () => {
-  console.log("Running on port 19001");
+app.listen(3000, () => {
+  console.log("Running on port 3000");
 });
