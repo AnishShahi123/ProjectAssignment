@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     right: 15,
     marginTop: 20,
     opacity: 0.5,
-    fontWeight: "10",
+    fontWeight: "bold",
   },
   container: {
     paddingVertical: 16,

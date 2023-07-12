@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 36,
-    fontWeight: "800",
+    fontWeight: "bold",
     position: "absolute",
     top: 140,
     left: 30,
