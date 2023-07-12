@@ -10,6 +10,8 @@ import {
 import Ionicon from "react-native-vector-icons/Ionicons";
 import Title from "../components/Title";
 import GradientButton from "../components/GradientButton";
+import TopCanvas from "../components/TopCanvas";
+import BottomCanvas from "../components/BottomCanvas";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -54,6 +56,8 @@ const LoginPage = () => {
 
   return (
     <View style={styles.container}>
+      <TopCanvas />
+      <BottomCanvas />
       <Title heading="Login" />
       <Title subtitle="Please sign in to continue." />
       <View style={styles.SectionStyle}>

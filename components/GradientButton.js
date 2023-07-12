@@ -10,9 +10,9 @@ const GradientButton = ({ colors, text }) => {
     <View style={styles.container}>
       <LinearGradient
         // Button Linear Gradient
-        colors={["#FFFF00", "#F44336"]}
-        start={{ x: 0, y: 0.5 }}
-        end={{ x: 1.5, y: 0.5 }}
+        colors={["#fdcd83", "#f8bd51"]}
+        start={{ x: 1, y: 0.5 }}
+        end={{ x: 0.5, y: 0 }}
         style={styles.button}
       >
         <Text style={styles.text}>
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    borderRadius: 30,
   },
   text: {
     color: "white",
