@@ -8,6 +8,7 @@ import {
   View,
 } from "react-native";
 import Ionicon from "react-native-vector-icons/Ionicons";
+import GradientButton from "../components/GradientButton";
 
 const Signup = () => {
   const [fullName, setFullName] = useState("");
@@ -100,9 +101,10 @@ const Signup = () => {
       </View>
       <View>
         <TouchableOpacity style={styles.button} onPress={handleRegister}>
-          <Text style={styles.buttonTextStyle}>
+          <GradientButton text="SIGN UP" />
+          {/* <Text style={styles.buttonTextStyle}>
             SIGN UP <Ionicon name="arrow-forward" size={20} />
-          </Text>
+          </Text> */}
         </TouchableOpacity>
       </View>
       <Text style={styles.bottomText}>
@@ -184,7 +186,7 @@ const styles = StyleSheet.create({
     left: 90,
   },
   signInText: {
-    color: "blue",
+    color: "#FF9800",
     fontSize: 18,
     fontWeight: "bold",
   },

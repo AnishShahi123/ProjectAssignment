@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import Ionicon from "react-native-vector-icons/Ionicons";
 import Title from "../components/Title";
-import mongoose from "mongoose";
+import GradientButton from "../components/GradientButton";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -18,7 +18,6 @@ const LoginPage = () => {
 
   const handleLogin = () => {
     // Make an API request to the server for authentication
-    // Replace the API_URL with your actual server URL
     fetch("/login", {
       method: "POST",
       headers: {
@@ -34,7 +33,6 @@ const LoginPage = () => {
         // Handle the response from the server
         if (data.success) {
           // User is authenticated, perform necessary actions
-          // For example, navigate to the home screen
           navigation.navigate("Home");
         } else {
           // Authentication failed, handle the error
@@ -66,6 +64,7 @@ const LoginPage = () => {
           onChangeText={setEmail}
           style={styles.input}
         />
+        <View></View>
       </View>
       <View style={styles.SectionStylePassword}>
         <Ionicon name="keypad" size={20} />
@@ -82,9 +81,10 @@ const LoginPage = () => {
       </View>
       <View>
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
-          <Text style={styles.buttonTextStyle}>
+          <GradientButton text="LOGIN" />
+          {/* <Text style={styles.buttonTextStyle}>
             LOGIN <Ionicon name="arrow-forward" size={20} />
-          </Text>
+          </Text> */}
         </TouchableOpacity>
       </View>
       <Text style={styles.bottomText}>
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     bottom: 50,
   },
   signupText: {
-    color: "blue",
+    color: "#FF9800",
     fontSize: 18,
     fontWeight: "bold",
   },
