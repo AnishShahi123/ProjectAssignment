@@ -1,18 +1,31 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
 const app = express();
+
+const secretKey = "SECRET_KEY";
 
 // Middleware for parsing request body
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect(
-  "mongodb+srv://kanxagucci:xY6wUE1IpgsB7gdv@cluster0.xlr8uns.mongodb.net/",
-  {
+const connectToMongoDB = async () => {
+  const uri =
+    "mongodb+srv://<Username>:<password>@cluster0.xlr8uns.mongodb.net/?retryWrites=true&w=majority";
+  const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+  };
+
+  try {
+    await mongoose.connect(uri, options);
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.error(error);
   }
-);
+};
+
+connectToMongoDB();
 
 // Create a model
 const UserSchema = new mongoose.Schema({
@@ -34,7 +47,11 @@ app.post("/register", async (req, res) => {
     }
 
     // Create a new user
-    const user = new User({ fullname, email, password });
+    const user = new User({
+      fullname,
+      email,
+      password,
+    });
 
     // Save the user to the database
     await user.save();
@@ -63,12 +80,18 @@ app.post("/login", async (req, res) => {
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    // Perform authentication and generate a token (e.g., JWT)
-    //   const token = "generated_token";
+    // Generate a token
+    const token = jwt.sign({ userId: user.id }, secretKey, {
+      expiresIn: 60 * 60,
+    });
 
-    //   res.status(200).json({ message: "Login successful", token });
+    res.status(200).json({ message: "Login successful", token });
   } catch (error) {
     console.error("Login error:", error);
     res.status(500).json({ message: "Login failed" });
   }
+});
+
+app.listen(19001, () => {
+  console.log("Running on port 19001");
 });

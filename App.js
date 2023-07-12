@@ -4,7 +4,6 @@ import React from "react";
 import LoginPage from "./screens/Login";
 import Signup from "./screens/Signup";
 import Home from "./screens/Home";
-import GradientButton from "./components/GradientButton";
 
 const Stack = createNativeStackNavigator();
 
