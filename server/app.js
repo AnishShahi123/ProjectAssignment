@@ -29,7 +29,7 @@ connectToMongoDB();
 
 // Create a model
 const UserSchema = new mongoose.Schema({
-  fullname: String,
+  fullName: String,
   email: String,
   password: String,
 });
@@ -37,7 +37,7 @@ const User = mongoose.model("User", UserSchema);
 
 // Register a new user
 app.post("/register", async (req, res) => {
-  const { fullname, email, password } = req.body;
+  const { fullName, email, password, confirmPassword } = req.body;
 
   try {
     // Check if the user already exists
@@ -48,9 +48,10 @@ app.post("/register", async (req, res) => {
 
     // Create a new user
     const user = new User({
-      fullname,
+      fullName,
       email,
       password,
+      confirmPassword,
     });
 
     // Save the user to the database
