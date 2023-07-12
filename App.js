@@ -1,9 +1,12 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
+import { View } from "react-native";
 import LoginPage from "./screens/Login";
 import Signup from "./screens/Signup";
 import Home from "./screens/Home";
+import TopCanvas from "./components/TopCanvas";
+import BottomCanvas from "./components/BottomCanvas";
 
 const Stack = createNativeStackNavigator();
 

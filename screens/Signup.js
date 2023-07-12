@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import Ionicon from "react-native-vector-icons/Ionicons";
 import GradientButton from "../components/GradientButton";
+import TopCanvas from "../components/TopCanvas";
+import BottomCanvas from "../components/BottomCanvas";
 
 const Signup = () => {
   const [fullName, setFullName] = useState("");
@@ -58,6 +60,8 @@ const Signup = () => {
 
   return (
     <View style={styles.container}>
+      <TopCanvas />
+      <BottomCanvas />
       <TouchableOpacity style={styles.backarrow} onPress={handleSignIn}>
         <Ionicon name="arrow-back" size={40} />
       </TouchableOpacity>
