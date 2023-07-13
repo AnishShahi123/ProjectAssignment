@@ -21,8 +21,7 @@ const Signup = () => {
 
   const handleRegister = () => {
     // Make an API request to the server for registration
-    // Replace the API_URL with your actual server URL
-    fetch("/register", {
+    fetch("https://jsonplaceholder.typicode.com/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,23 +30,21 @@ const Signup = () => {
         fullName,
         email,
         password,
+        confirmPassword,
       }),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
       .then((data) => {
         // Handle the response from the server
-        if (data.success) {
-          // Registration successful, perform necessary actions
-          // For example, navigate to the login screen
-          navigation.navigate("Login");
-        } else {
-          // Registration failed, handle the error
-          // For example, display an error message
-          alert("Registration failed. Please try again.");
-        }
+        console.log("Registration successful:", data);
+        alert("User Registered");
       })
       .catch((error) => {
-        // Handle any errors that occurred during the API request
         console.error(error);
         alert("An error occurred during registration. Please try again.");
       });
@@ -71,7 +68,7 @@ const Signup = () => {
         <TextInput
           placeholder="Full Name"
           value={fullName}
-          onChangeText={setFullName}
+          onChangeText={(data) => setFullName(data)}
           style={styles.input}
         />
       </View>
@@ -80,7 +77,7 @@ const Signup = () => {
         <TextInput
           placeholder="Email"
           value={email}
-          onChangeText={setEmail}
+          onChangeText={(data) => setEmail(data)}
           style={styles.input}
         />
       </View>
@@ -89,7 +86,7 @@ const Signup = () => {
         <TextInput
           placeholder="Password"
           value={password}
-          onChangeText={setPassword}
+          onChangeText={(data) => setPassword(data)}
           secureTextEntry={true}
           style={styles.input}
         />
@@ -99,7 +96,8 @@ const Signup = () => {
         <TextInput
           placeholder="Confirm Password"
           value={confirmPassword}
-          onChangeText={setConfirmPassword}
+          onChangeText={(data) => setConfirmPassword(data)}
+          secureTextEntry={true}
           style={styles.input}
         />
       </View>

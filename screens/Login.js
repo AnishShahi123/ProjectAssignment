@@ -20,30 +20,28 @@ const LoginPage = () => {
 
   const handleLogin = () => {
     // Make an API request to the server for authentication
-    fetch("/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
+    fetch("https://jsonplaceholder.typicode.com/users", {
+      method: "GET",
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
       .then((data) => {
-        // Handle the response from the server
-        if (data.success) {
+        const authenticatedUser = data.find((user) => user.email === email);
+
+        if (authenticatedUser) {
           // User is authenticated, perform necessary actions
+          alert("Login Successful");
           navigation.navigate("Home");
         } else {
           // Authentication failed, handle the error
-          // For example, display an error message
           alert("Authentication failed. Please try again.");
         }
       })
       .catch((error) => {
-        // Handle any errors that occurred during the API request
         console.error(error);
         alert("An error occurred during authentication. Please try again.");
       });
@@ -65,7 +63,7 @@ const LoginPage = () => {
         <TextInput
           placeholder="Email"
           value={email}
-          onChangeText={setEmail}
+          onChangeText={(data) => setEmail(data)}
           style={styles.input}
         />
         <View></View>
@@ -75,7 +73,7 @@ const LoginPage = () => {
         <TextInput
           placeholder="Password"
           value={password}
-          onChangeText={setPassword}
+          onChangeText={(data) => setPassword(data)}
           secureTextEntry={true}
           style={styles.input}
         />
