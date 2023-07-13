@@ -17,10 +17,14 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const navigation = useNavigation(); // Initialize the navigation object
+  const navigation = useNavigation();
 
   const handleRegister = () => {
-    // Make an API request to the server for registration
+    if (!fullName || !email || !password || !confirmPassword) {
+      alert("All field Required");
+      return;
+    }
+    // Making an API request to the server for registration
     fetch("https://jsonplaceholder.typicode.com/users", {
       method: "POST",
       headers: {
@@ -40,9 +44,10 @@ const Signup = () => {
         return response.json();
       })
       .then((data) => {
-        // Handle the response from the server
+        // Handling the response from the server
         console.log("Registration successful:", data);
         alert("User Registered");
+        alert(data);
       })
       .catch((error) => {
         console.error(error);

@@ -16,10 +16,14 @@ import BottomCanvas from "../components/BottomCanvas";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigation = useNavigation(); // Initialize the navigation object
+  const navigation = useNavigation();
 
   const handleLogin = () => {
-    // Make an API request to the server for authentication
+    if (!email || !password) {
+      alert("All field Required");
+      return;
+    }
+    // Making an API request to the server for authentication
     fetch("https://jsonplaceholder.typicode.com/users", {
       method: "GET",
     })
@@ -33,14 +37,15 @@ const LoginPage = () => {
         const authenticatedUser = data.find((user) => user.email === email);
 
         if (authenticatedUser) {
-          // User is authenticated, perform necessary actions
+          // If user is authenticated
           alert("Login Successful");
           navigation.navigate("Home");
         } else {
-          // Authentication failed, handle the error
+          // If Authentication is failed
           alert("Authentication failed. Please try again.");
         }
       })
+      //If anything goes wrong
       .catch((error) => {
         console.error(error);
         alert("An error occurred during authentication. Please try again.");
@@ -84,13 +89,10 @@ const LoginPage = () => {
       <View>
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <GradientButton text="LOGIN" />
-          {/* <Text style={styles.buttonTextStyle}>
-            LOGIN <Ionicon name="arrow-forward" size={20} />
-          </Text> */}
         </TouchableOpacity>
       </View>
       <Text style={styles.bottomText}>
-        Don't have an account?{" "}
+        Don't have an account?
         <Text style={styles.signupText} onPress={handleSignup}>
           Sign up
         </Text>
