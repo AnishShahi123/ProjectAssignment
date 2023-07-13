@@ -47,7 +47,7 @@ const Signup = () => {
         // Handling the response from the server
         console.log("Registration successful:", data);
         alert("User Registered");
-        alert(data);
+        navigation.navigate("Login");
       })
       .catch((error) => {
         console.error(error);
